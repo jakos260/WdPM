@@ -1,0 +1,13 @@
+./processor.v
+
+./src/basic/a.v
+./src/basic/alu.v
+
+./src/control/counter.v
+./src/control/id.v
+
+./src/memory/rom.v
+./src/memory/rf.v
+./src/memory/registers.v
+
+./src/utils/mux.v

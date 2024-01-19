@@ -1,0 +1,22 @@
+module processor(
+input clk,
+output [3:0] out
+);
+
+wire [3:0] data;
+
+counter ProgramCounter(
+	.clk(clk),
+	.rst(rst),
+	.data(data)
+);
+
+rom Rom(
+
+);
+
+id Decoder(
+	.rom_data(
+);
+
+endmodule
