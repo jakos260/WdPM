@@ -1,6 +1,6 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Mon Jan 22 18:49:36 2024
+[*] Mon Jan 22 19:07:15 2024
 [*]
 [dumpfile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\tests\up_tb.vcd"
 [savefile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\processor_tb.P.rst"

@@ -1,10 +1,10 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Mon Jan 22 13:48:55 2024
+[*] Mon Jan 22 19:26:45 2024
 [*]
 [dumpfile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\up_tb.vcd"
-[dumpfile_mtime] "Mon Jan 22 13:46:22 2024"
-[dumpfile_size] 9776
+[dumpfile_mtime] "Mon Jan 22 19:25:48 2024"
+[dumpfile_size] 9145
 [savefile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\processor_tb.P.rst"
 [timestart] 0
 [size] 1536 801
@@ -16,8 +16,8 @@
 [signals_width] 142
 [sst_expanded] 1
 [sst_vpaned_height] 223
-@22
-processor_tb.P.pc_bits[15:0]
+@23
+processor_tb.P.pc_bits[7:0]
 @28
 processor_tb.P.clk_in
 processor_tb.P.rst
@@ -38,7 +38,6 @@ processor_tb.P.acu_out[15:0]
 processor_tb.P.mux_out[15:0]
 processor_tb.P.reg_out[15:0]
 processor_tb.P.Registers.reg_addr[15:0]
-processor_tb.P.ret_addr[15:0]
 @28
 processor_tb.P.stack_empty
 processor_tb.P.stack_full

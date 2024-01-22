@@ -12,7 +12,7 @@ module registers(clk, en, r_or_w, reg_addr, in, out);
 
     initial out <= 16'dz;
 
-    always @(negedge clk) begin
+    always @(*) begin
         if(en) begin        
             if(r_or_w) begin // write
                 mem[reg_addr] <= in;

@@ -38,10 +38,10 @@ initial begin
     for (i = 0; i<100; i++) begin
         #1 clk = ~clk;        
     end
-    #1   
-    rst = 1;
-    #1
-    rst = 0;
+    // #1   
+    // rst = 1;
+    // #1
+    // rst = 0;
     $finish;
 end
 

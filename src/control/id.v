@@ -37,7 +37,8 @@ module id (instr, op, acu_zero, ldi, rf_en, acu_en, rst, jmp_en, r_or_w, stack_f
             8'h0F:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_1_100_00, `ST};  // st
             8'h10:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_1_0_010_00, `LDI}; // ldi
             8'h11:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_000_00, `NOP}; // nop
-            default:  {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b1_0_0_000_00, `RST}; // rst
+            8'h12:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b1_0_0_000_00, `RST}; // rst
+            default:  {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_000_00, `NOP}; // nop
         endcase
     end
 endmodule

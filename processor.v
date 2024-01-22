@@ -9,7 +9,7 @@ module processor(clk_in, rst_in, out);
 	reg rst = 1'b0;
 
 	wire rst_id, ldi, acu_en, rf_en, jmp_en;
-	wire[15:0] pc_bits;
+	wire[7:0] pc_bits;
 	wire[23:0] rom_data; // 8op + 16data
 	wire[15:0] alu_out;
 	wire[15:0] acu_out;
@@ -23,7 +23,7 @@ module processor(clk_in, rst_in, out);
 	wire alu_overflow;
 
 	wire stack_push, stack_pop, stack_full, stack_empty;
-	wire [15:0] ret_addr;
+	wire [7:0] ret_addr;
 
 	initial out <= 16'd0;
 	always @(*) begin
@@ -35,13 +35,15 @@ module processor(clk_in, rst_in, out);
 		.clk(clk_in),
 		.rst(rst),
 		.jmp_en(jmp_en),
-		.jmp_addr(jmp_en ? (stack_pop ? ret_addr+1'b1 : rom_data[15:0]) : 16'bz),
+		.jmp_addr(jmp_en ? (stack_pop ? ret_addr+1'b1 : rom_data[7:0]) : 8'bz),
 		.pc(pc_bits)
 	);
 
-	rom #(.RAM_WORD_WIDTH(24), .RAM_ADDR_BITS(4)) Rom
-	(	.addr(pc_bits),
-		.data(rom_data));
+	rom #(.RAM_WORD_WIDTH(24), .RAM_ADDR_BITS(8)) Rom(
+		.clk(clk_in),
+		.addr(pc_bits),
+		.data(rom_data)
+	);
 
 	id InstructionDecoder(
 		.instr(rom_data[23:16]),
@@ -89,7 +91,7 @@ module processor(clk_in, rst_in, out);
 		.sel(ldi)
 	);
 
-	stack #(.WIDTH(16)) Stack(
+	stack #(.WIDTH(8)) Stack(
 		.clk(clk_in),
 		.rst(rst),
 		.push(stack_push),

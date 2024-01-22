@@ -1,12 +1,13 @@
 `timescale 1ns/1ps
 `include "./src/control/instructions.v"
 
-module rom(addr, data);
+module rom(clk, addr, data);
 
 parameter RAM_WORD_WIDTH = 24;
-parameter RAM_ADDR_BITS = 4;
+parameter RAM_ADDR_BITS = 8;
 
-input [(2**RAM_ADDR_BITS)-1 : 0] addr;
+input clk;
+input [RAM_ADDR_BITS-1 : 0] addr;
 output reg [RAM_WORD_WIDTH-1 : 0] data;
 
 
@@ -30,14 +31,15 @@ initial begin
 
 	//test 2
 	mem [0]  	= {`NOP,	16'h0};
-	mem [1]		= {`CLL,	16'd10};
+	mem [1]		= {`CLL,	16'd20};
 	mem [2]  	= {`LD, 	16'h2};
-	mem [10] 	= {`LDI,	16'h5};
-	mem [11]  	= {`ST,		16'h1};
-	mem [12]  	= {`LDI,	16'h3};
-	mem [13]  	= {`ADD,	16'h1};
-	mem [14]  	= {`ST,		16'h2};
-	mem [15]  	= {`RET,	16'h0};
+	mem [2]  	= {`RST, 	16'h0};
+	mem [20] 	= {`LDI,	16'h5};
+	mem [21]  	= {`ST,		16'h1};
+	mem [22]  	= {`LDI,	16'h3};
+	mem [23]  	= {`ADD,	16'h1};
+	mem [24]  	= {`ST,		16'h2};
+	mem [25]  	= {`RET,	16'h0};
 
 	
 	//test 3
