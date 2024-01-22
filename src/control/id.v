@@ -1,53 +1,41 @@
 `timescale 1ns/1ps
 `include "./src/control/instructions.v"
 
-module id (instr, op, ldi, rf_en, acu_en, rst, jmp_en, r_or_w);
+module id (instr, op, ldi, rf_en, acu_en, rst, jmp_en, r_or_w, stack_flags, stack_control);
 
-    parameter INSTR_WIDTH = 2;
-    parameter OP_WIDTH = 4;
+    // parameter INSTR_WIDTH = 2;
+    // parameter OP_WIDTH = 4;
 
     input [7:0] instr;
     output reg [7:0] op;
     output reg rst, ldi, rf_en, acu_en, jmp_en, r_or_w;
 
-    initial {rst, ldi, r_or_w, rf_en, acu_en, jmp_en} = {6'b0_0_0_010};
+    input [1:0] stack_flags; // FULL EMPTY
+    output reg [1:0] stack_control; // PUSH POP
+
+    initial {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control} = {8'b0_0_0_010_00};
 
 
     always @(*) begin
         case(instr)
-            8'd0:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_010, `NOT}; // not
-            8'd1:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_110, `XOR}; // xor
-            8'd2:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_110, `OR};  // or
-            8'd3:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_110, `AND}; // and
-            8'd4:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_110, `SUB}; // sub
-            8'd5:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_110, `ADD}; // add
-            8'd6:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_010, `RR};  // rr
-            8'd7:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_010, `RL};  // rl
-            8'd8:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_010, `DEC}; // dec
-            8'd9:     {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_010, `INC}; // inc
-            8'd10:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_110, `LD};  // ld
-            8'd11:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_1_100, `ST};  // st
-            8'd12:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_000, `NOP}; // nop
-            8'd13:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_1_0_010, `LDI}; // ldi
-            8'd14:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b0_0_0_001, `JMP}; // jmp
-            8'd15:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd16:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd17:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd18:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd19:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd20:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd21:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd22:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd23:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd23:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd24:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd25:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd26:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd27:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd28:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd29:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd30:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
-            8'd31:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, op} <= {6'b1_0_0_000, `RST}; // rst
+            8'h00:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_010_00, `NOT}; // not
+            8'h01:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_110_00, `XOR}; // xor
+            8'h02:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_110_00, `OR};  // or
+            8'h03:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_110_00, `AND}; // and
+            8'h04:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_110_00, `SUB}; // sub
+            8'h05:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_110_00, `ADD}; // add
+            8'h06:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_010_00, `RR};  // rr
+            8'h07:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_010_00, `RL};  // rl
+            8'h08:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_010_00, `DEC}; // dec
+            8'h09:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_010_00, `INC}; // inc
+            8'h0A:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_110_00, `LD};  // ld
+            8'h0B:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_1_100_00, `ST};  // st
+            8'h0C:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_1_0_010_00, `LDI}; // ldi
+            8'h0D:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_001_00, `JMP}; // jmp
+            8'h0E:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_001_10, /*stack_flags[0] == 0 ? 2'b10 : 2'b00,*/ `CLL}; // call (push stack if not full)
+            8'h0F:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_001_01, /*stack_flags[1] == 0 ? 2'b01 : 2'b00,*/ `RET}; // return (pop stack if not empty)
+            8'h10:    {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b0_0_0_000_00, `NOP}; // nop
+            default:  {rst, ldi, r_or_w, rf_en, acu_en, jmp_en, stack_control, op} <= {8'b1_0_0_000_00, `RST}; // rst
         endcase
     end
 endmodule

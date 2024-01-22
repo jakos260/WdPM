@@ -11,3 +11,4 @@
 ./src/memory/registers.v
 
 ./src/utils/mux.v
+./src/utils/stack.v

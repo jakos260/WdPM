@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Mon Jan 15 17:45:14 2024
+[*] Mon Jan 22 13:48:55 2024
 [*]
 [dumpfile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\up_tb.vcd"
-[dumpfile_mtime] "Mon Jan 15 17:41:20 2024"
-[dumpfile_size] 9047
+[dumpfile_mtime] "Mon Jan 22 13:46:22 2024"
+[dumpfile_size] 9776
 [savefile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\processor_tb.P.rst"
 [timestart] 0
 [size] 1536 801
-[pos] -113 -113
-*-12.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-12.355423 17370 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] processor_tb.
 [treeopen] processor_tb.P.
 [sst_width] 197
@@ -22,6 +22,9 @@ processor_tb.P.pc_bits[15:0]
 processor_tb.P.clk_in
 processor_tb.P.rst
 @22
+[color] 7
+processor_tb.P.rom_data[23:0]
+[color] 7
 processor_tb.P.op[7:0]
 @28
 processor_tb.P.acu_en
@@ -34,9 +37,12 @@ processor_tb.P.alu_out[15:0]
 processor_tb.P.acu_out[15:0]
 processor_tb.P.mux_out[15:0]
 processor_tb.P.reg_out[15:0]
-processor_tb.P.rom_data[23:0]
 processor_tb.P.Registers.reg_addr[15:0]
-processor_tb.P.Registers.in[15:0]
-processor_tb.P.Registers.out[15:0]
+processor_tb.P.ret_addr[15:0]
+@28
+processor_tb.P.stack_empty
+processor_tb.P.stack_full
+processor_tb.P.stack_pop
+processor_tb.P.stack_push
 [pattern_trace] 1
 [pattern_trace] 0

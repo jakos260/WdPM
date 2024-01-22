@@ -10,12 +10,12 @@
 `define INC 8'h09
 `define LD  8'h0A // load register -> accumulator
 `define ST  8'h0B // store accumulator -> register
-`define NOP 8'h0C
-`define LDI 8'h0D // load rom -> accumulator
-`define JMP 8'h0E
-`define RST 8'h0F
-`define Call // skok z adresem powrotu
-`define return // adres powrotu
+`define LDI 8'h0C // load rom -> accumulator
+`define JMP 8'h0D
+`define CLL 8'h0E // Call   - skok z adresem powrotu
+`define RET 8'h0F // Return - adres powrotu
+`define NOP 8'h10
+`define RST 8'h11
 
 /*
     case(instr)

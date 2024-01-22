@@ -54,13 +54,9 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name VERILOG_FILE counter.v
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_location_assignment PIN_AA14 -to clk
-set_global_assignment -name VERILOG_FILE rom.v
-set_global_assignment -name VERILOG_FILE id.v
-set_global_assignment -name VERILOG_FILE processor.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -72,11 +68,15 @@ set_location_assignment PIN_W19 -to pc_out[3]
 set_location_assignment PIN_W20 -to pc_out[1]
 set_location_assignment PIN_Y19 -to pc_out[2]
 set_location_assignment PIN_W21 -to pc_out[0]
-set_global_assignment -name VERILOG_FILE instructions.v
-set_global_assignment -name VERILOG_FILE alu.v
-set_global_assignment -name VERILOG_FILE rf.v
-set_global_assignment -name VERILOG_FILE a.v
 set_location_assignment PIN_Y21 -to rst_out
-set_global_assignment -name VERILOG_FILE mux2bit4.v
+set_global_assignment -name VERILOG_FILE src/utils/stack.v
+set_global_assignment -name VERILOG_FILE src/utils/mux.v
+set_global_assignment -name VERILOG_FILE src/memory/rom.v
+set_global_assignment -name VERILOG_FILE src/memory/registers.v
+set_global_assignment -name VERILOG_FILE src/control/instructions.v
+set_global_assignment -name VERILOG_FILE src/control/id.v
+set_global_assignment -name VERILOG_FILE src/control/counter.v
+set_global_assignment -name VERILOG_FILE src/basic/alu.v
+set_global_assignment -name VERILOG_FILE src/basic/a.v
+set_global_assignment -name VERILOG_FILE processor.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VERILOG_FILE registers.v

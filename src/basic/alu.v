@@ -30,6 +30,8 @@ always @(*) begin
         `NOP:   out <= 16'd0;
         `LDI:   out <= in1;
         `JMP:   out <= 16'd0;
+        `CLL:   out <= 16'd0;
+        `RET:   out <= 16'd0;
         `RST:   out <= 16'd0;
         default: out <= 16'd0;
     endcase
