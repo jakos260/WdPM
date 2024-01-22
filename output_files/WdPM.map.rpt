@@ -1,6 +1,6 @@
 Analysis & Synthesis report for WdPM
-Mon Nov  6 14:46:53 2023
-Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Standard Edition
+Mon Jan 22 19:56:06 2024
+Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
 ---------------------
@@ -13,26 +13,35 @@ Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Standard Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Parameter Settings for User Entity Instance: counter:ProgramCounter
- 12. Parameter Settings for User Entity Instance: rom:Rom
- 13. Parameter Settings for User Entity Instance: alu:Alu
- 14. Parameter Settings for User Entity Instance: a:Accumulator
- 15. Parameter Settings for User Entity Instance: rf:Rf
- 16. Port Connectivity Checks: "mux2bit4:Mux"
- 17. Port Connectivity Checks: "alu:Alu"
- 18. Post-Synthesis Netlist Statistics for Top Partition
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Registers Packed Into Inferred Megafunctions
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for registers:Registers|altsyncram:mem_rtl_0|altsyncram_43n1:auto_generated
+ 17. Parameter Settings for User Entity Instance: rom:Rom
+ 18. Parameter Settings for User Entity Instance: alu:Alu
+ 19. Parameter Settings for User Entity Instance: a:Accumulator
+ 20. Parameter Settings for User Entity Instance: registers:Registers
+ 21. Parameter Settings for User Entity Instance: mux:Mux
+ 22. Parameter Settings for User Entity Instance: stack:Stack
+ 23. Parameter Settings for Inferred Entity Instance: registers:Registers|altsyncram:mem_rtl_0
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. Port Connectivity Checks: "alu:Alu"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+ 29. Analysis & Synthesis Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2022  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -49,27 +58,27 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+--------------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                         ;
-+---------------------------------+----------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Nov  6 14:46:53 2023              ;
-; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Standard Edition ;
-; Revision Name                   ; WdPM                                               ;
-; Top-level Entity Name           ; processor                                          ;
-; Family                          ; Cyclone V                                          ;
-; Logic utilization (in ALMs)     ; N/A                                                ;
-; Total registers                 ; 12                                                 ;
-; Total pins                      ; 9                                                  ;
-; Total virtual pins              ; 0                                                  ;
-; Total block memory bits         ; 0                                                  ;
-; Total DSP Blocks                ; 0                                                  ;
-; Total HSSI RX PCSs              ; 0                                                  ;
-; Total HSSI PMA RX Deserializers ; 0                                                  ;
-; Total HSSI TX PCSs              ; 0                                                  ;
-; Total HSSI PMA TX Serializers   ; 0                                                  ;
-; Total PLLs                      ; 0                                                  ;
-; Total DLLs                      ; 0                                                  ;
-+---------------------------------+----------------------------------------------------+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Jan 22 19:56:06 2024          ;
+; Quartus Prime Version           ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
+; Revision Name                   ; WdPM                                           ;
+; Top-level Entity Name           ; processor                                      ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 57                                             ;
+; Total pins                      ; 18                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 256                                            ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -167,104 +176,279 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
+; Average used               ; 1.01        ;
 ; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ;   0.0%      ;
+;     Processors 2-6         ;   0.1%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                     ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                       ; Library ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
-; counter.v                        ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/counter.v      ;         ;
-; rom.v                            ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/rom.v          ;         ;
-; id.v                             ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/id.v           ;         ;
-; processor.v                      ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/processor.v    ;         ;
-; instructions.v                   ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/instructions.v ;         ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/alu.v          ;         ;
-; rf.v                             ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/rf.v           ;         ;
-; a.v                              ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/a.v            ;         ;
-; mux2bit4.v                       ; yes             ; User Verilog HDL File  ; /home/student/Projects/Quartus/WdPM/mux2bit4.v     ;         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                     ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                 ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------+---------+
+; src/utils/stack.v                ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v                               ;         ;
+; src/utils/mux.v                  ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/mux.v                                 ;         ;
+; src/memory/rom.v                 ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/rom.v                                ;         ;
+; src/memory/registers.v           ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v                          ;         ;
+; src/control/instructions.v       ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/instructions.v                      ;         ;
+; src/control/id.v                 ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/id.v                                ;         ;
+; src/control/counter.v            ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v                           ;         ;
+; src/basic/alu.v                  ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v                                 ;         ;
+; src/basic/a.v                    ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/a.v                                   ;         ;
+; processor.v                      ; yes             ; User Verilog HDL File        ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v                                     ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal221.inc                   ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/aglobal221.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; d:/programy/quartus-lite-22.1std.1.917-windows/quartus/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_43n1.tdf           ; yes             ; Auto-Generated Megafunction  ; D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/db/altsyncram_43n1.tdf                          ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 7         ;
-;                                             ;           ;
-; Combinational ALUT usage for logic          ; 13        ;
-;     -- 7 input functions                    ; 0         ;
-;     -- 6 input functions                    ; 0         ;
-;     -- 5 input functions                    ; 4         ;
-;     -- 4 input functions                    ; 7         ;
-;     -- <=3 input functions                  ; 2         ;
-;                                             ;           ;
-; Dedicated logic registers                   ; 12        ;
-;                                             ;           ;
-; I/O pins                                    ; 9         ;
-;                                             ;           ;
-; Total DSP Blocks                            ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 12        ;
-; Total fan-out                               ; 91        ;
-; Average fan-out                             ; 2.12      ;
-+---------------------------------------------+-----------+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimate of Logic utilization (ALMs needed) ; 103          ;
+;                                             ;              ;
+; Combinational ALUT usage for logic          ; 155          ;
+;     -- 7 input functions                    ; 9            ;
+;     -- 6 input functions                    ; 37           ;
+;     -- 5 input functions                    ; 12           ;
+;     -- 4 input functions                    ; 31           ;
+;     -- <=3 input functions                  ; 66           ;
+;                                             ;              ;
+; Dedicated logic registers                   ; 57           ;
+;                                             ;              ;
+; I/O pins                                    ; 18           ;
+; Total MLAB memory bits                      ; 0            ;
+; Total block memory bits                     ; 256          ;
+;                                             ;              ;
+; Total DSP Blocks                            ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; clk_in~input ;
+; Maximum fan-out                             ; 73           ;
+; Total fan-out                               ; 1005         ;
+; Average fan-out                             ; 3.81         ;
++---------------------------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                   ;
-+-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------+-------------+--------------+
-; Compilation Hierarchy Node  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Entity Name ; Library Name ;
-+-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------+-------------+--------------+
-; |processor                  ; 13 (0)              ; 12 (7)                    ; 0                 ; 0          ; 9    ; 0            ; |processor                        ; processor   ; work         ;
-;    |a:Accumulator|          ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|a:Accumulator          ; a           ; work         ;
-;    |alu:Alu|                ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|alu:Alu                ; alu         ; work         ;
-;    |counter:ProgramCounter| ; 4 (4)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|counter:ProgramCounter ; counter     ; work         ;
-;    |id:InstructionDecoder|  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|id:InstructionDecoder  ; id          ; work         ;
-;    |rom:Rom|                ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|rom:Rom                ; rom         ; work         ;
-+-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------+-------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                      ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------+-----------------+--------------+
+; |processor                                ; 155 (4)             ; 57 (0)                    ; 256               ; 0          ; 18   ; 0            ; |processor                                                                         ; processor       ; work         ;
+;    |a:Accumulator|                        ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |processor|a:Accumulator                                                           ; a               ; work         ;
+;    |alu:Alu|                              ; 94 (94)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|alu:Alu                                                                 ; alu             ; work         ;
+;    |counter:ProgramCounter|               ; 1 (1)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|counter:ProgramCounter                                                  ; counter         ; work         ;
+;    |id:InstructionDecoder|                ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|id:InstructionDecoder                                                   ; id              ; work         ;
+;    |mux:Mux|                              ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|mux:Mux                                                                 ; mux             ; work         ;
+;    |registers:Registers|                  ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |processor|registers:Registers                                                     ; registers       ; work         ;
+;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |processor|registers:Registers|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_43n1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |processor|registers:Registers|altsyncram:mem_rtl_0|altsyncram_43n1:auto_generated ; altsyncram_43n1 ; work         ;
+;    |rom:Rom|                              ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |processor|rom:Rom                                                                 ; rom             ; work         ;
+;    |stack:Stack|                          ; 26 (26)             ; 37 (37)                   ; 0                 ; 0          ; 0    ; 0            ; |processor|stack:Stack                                                             ; stack           ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                  ;
-+---------------------------------------+---------------------------------------------+
-; Register name                         ; Reason for Removal                          ;
-+---------------------------------------+---------------------------------------------+
-; rf:Rf|out[0,1]                        ; Stuck at GND due to stuck port clock_enable ;
-; a:Accumulator|out[1]                  ; Lost fanout                                 ;
-; rf:Rf|out[2]                          ; Stuck at GND due to stuck port clock_enable ;
-; a:Accumulator|out[2]                  ; Lost fanout                                 ;
-; rf:Rf|out[3]                          ; Stuck at GND due to stuck port clock_enable ;
-; a:Accumulator|out[3]                  ; Lost fanout                                 ;
-; out[2]~reg0                           ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 8 ;                                             ;
-+---------------------------------------+---------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                       ;
++------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                               ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; registers:Registers|altsyncram:mem_rtl_0|altsyncram_43n1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16           ; 16           ; 16           ; 16           ; 256  ; None ;
++------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                             ;
-+---------------+--------------------------------+----------------------------------------+
-; Register name ; Reason for Removal             ; Registers Removed due to This Register ;
-+---------------+--------------------------------+----------------------------------------+
-; rf:Rf|out[0]  ; Stuck at GND                   ; out[2]~reg0                            ;
-;               ; due to stuck port clock_enable ;                                        ;
-; rf:Rf|out[1]  ; Stuck at GND                   ; a:Accumulator|out[1]                   ;
-;               ; due to stuck port clock_enable ;                                        ;
-; rf:Rf|out[2]  ; Stuck at GND                   ; a:Accumulator|out[2]                   ;
-;               ; due to stuck port clock_enable ;                                        ;
-; rf:Rf|out[3]  ; Stuck at GND                   ; a:Accumulator|out[3]                   ;
-;               ; due to stuck port clock_enable ;                                        ;
-+---------------+--------------------------------+----------------------------------------+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; alu:Alu|out[0]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[1]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[2]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[3]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[4]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[5]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[6]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[7]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[8]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[9]                                      ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[10]                                     ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[11]                                     ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[12]                                     ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[13]                                     ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[14]                                     ; alu:Alu|WideOr1     ; yes                    ;
+; alu:Alu|out[15]                                     ; alu:Alu|WideOr1     ; yes                    ;
+; Number of user-specified and inferred latches = 16  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------+
+; Registers Removed During Synthesis                           ;
++-----------------------------------------+--------------------+
+; Register name                           ; Reason for Removal ;
++-----------------------------------------+--------------------+
+; registers:Registers|out[0]~en           ; Lost fanout        ;
+; registers:Registers|out[1]~en           ; Lost fanout        ;
+; registers:Registers|out[2]~en           ; Lost fanout        ;
+; registers:Registers|out[3]~en           ; Lost fanout        ;
+; registers:Registers|out[4]~en           ; Lost fanout        ;
+; registers:Registers|out[5]~en           ; Lost fanout        ;
+; registers:Registers|out[6]~en           ; Lost fanout        ;
+; registers:Registers|out[7]~en           ; Lost fanout        ;
+; registers:Registers|out[8]~en           ; Lost fanout        ;
+; registers:Registers|out[9]~en           ; Lost fanout        ;
+; registers:Registers|out[10]~en          ; Lost fanout        ;
+; registers:Registers|out[11]~en          ; Lost fanout        ;
+; registers:Registers|out[12]~en          ; Lost fanout        ;
+; registers:Registers|out[13]~en          ; Lost fanout        ;
+; registers:Registers|out[14]~en          ; Lost fanout        ;
+; registers:Registers|out[15]~en          ; Lost fanout        ;
+; counter:ProgramCounter|pc[4]            ; Lost fanout        ;
+; stack:Stack|mem~52                      ; Lost fanout        ;
+; stack:Stack|mem~36                      ; Lost fanout        ;
+; stack:Stack|mem~20                      ; Lost fanout        ;
+; stack:Stack|mem~4                       ; Lost fanout        ;
+; stack:Stack|mem~116                     ; Lost fanout        ;
+; stack:Stack|mem~100                     ; Lost fanout        ;
+; stack:Stack|mem~84                      ; Lost fanout        ;
+; stack:Stack|mem~68                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[5]            ; Lost fanout        ;
+; stack:Stack|mem~53                      ; Lost fanout        ;
+; stack:Stack|mem~37                      ; Lost fanout        ;
+; stack:Stack|mem~21                      ; Lost fanout        ;
+; stack:Stack|mem~5                       ; Lost fanout        ;
+; stack:Stack|mem~117                     ; Lost fanout        ;
+; stack:Stack|mem~101                     ; Lost fanout        ;
+; stack:Stack|mem~85                      ; Lost fanout        ;
+; stack:Stack|mem~69                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[6]            ; Lost fanout        ;
+; stack:Stack|mem~54                      ; Lost fanout        ;
+; stack:Stack|mem~38                      ; Lost fanout        ;
+; stack:Stack|mem~22                      ; Lost fanout        ;
+; stack:Stack|mem~6                       ; Lost fanout        ;
+; stack:Stack|mem~118                     ; Lost fanout        ;
+; stack:Stack|mem~102                     ; Lost fanout        ;
+; stack:Stack|mem~86                      ; Lost fanout        ;
+; stack:Stack|mem~70                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[7]            ; Lost fanout        ;
+; stack:Stack|mem~55                      ; Lost fanout        ;
+; stack:Stack|mem~39                      ; Lost fanout        ;
+; stack:Stack|mem~23                      ; Lost fanout        ;
+; stack:Stack|mem~7                       ; Lost fanout        ;
+; stack:Stack|mem~119                     ; Lost fanout        ;
+; stack:Stack|mem~103                     ; Lost fanout        ;
+; stack:Stack|mem~87                      ; Lost fanout        ;
+; stack:Stack|mem~71                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[8]            ; Lost fanout        ;
+; stack:Stack|mem~56                      ; Lost fanout        ;
+; stack:Stack|mem~40                      ; Lost fanout        ;
+; stack:Stack|mem~24                      ; Lost fanout        ;
+; stack:Stack|mem~8                       ; Lost fanout        ;
+; stack:Stack|mem~120                     ; Lost fanout        ;
+; stack:Stack|mem~104                     ; Lost fanout        ;
+; stack:Stack|mem~88                      ; Lost fanout        ;
+; stack:Stack|mem~72                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[9]            ; Lost fanout        ;
+; stack:Stack|mem~57                      ; Lost fanout        ;
+; stack:Stack|mem~41                      ; Lost fanout        ;
+; stack:Stack|mem~25                      ; Lost fanout        ;
+; stack:Stack|mem~9                       ; Lost fanout        ;
+; stack:Stack|mem~121                     ; Lost fanout        ;
+; stack:Stack|mem~105                     ; Lost fanout        ;
+; stack:Stack|mem~89                      ; Lost fanout        ;
+; stack:Stack|mem~73                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[10]           ; Lost fanout        ;
+; stack:Stack|mem~58                      ; Lost fanout        ;
+; stack:Stack|mem~42                      ; Lost fanout        ;
+; stack:Stack|mem~26                      ; Lost fanout        ;
+; stack:Stack|mem~10                      ; Lost fanout        ;
+; stack:Stack|mem~122                     ; Lost fanout        ;
+; stack:Stack|mem~106                     ; Lost fanout        ;
+; stack:Stack|mem~90                      ; Lost fanout        ;
+; stack:Stack|mem~74                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[11]           ; Lost fanout        ;
+; stack:Stack|mem~59                      ; Lost fanout        ;
+; stack:Stack|mem~43                      ; Lost fanout        ;
+; stack:Stack|mem~27                      ; Lost fanout        ;
+; stack:Stack|mem~11                      ; Lost fanout        ;
+; stack:Stack|mem~123                     ; Lost fanout        ;
+; stack:Stack|mem~107                     ; Lost fanout        ;
+; stack:Stack|mem~91                      ; Lost fanout        ;
+; stack:Stack|mem~75                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[12]           ; Lost fanout        ;
+; stack:Stack|mem~60                      ; Lost fanout        ;
+; stack:Stack|mem~44                      ; Lost fanout        ;
+; stack:Stack|mem~28                      ; Lost fanout        ;
+; stack:Stack|mem~12                      ; Lost fanout        ;
+; stack:Stack|mem~124                     ; Lost fanout        ;
+; stack:Stack|mem~108                     ; Lost fanout        ;
+; stack:Stack|mem~92                      ; Lost fanout        ;
+; stack:Stack|mem~76                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[13]           ; Lost fanout        ;
+; stack:Stack|mem~61                      ; Lost fanout        ;
+; stack:Stack|mem~45                      ; Lost fanout        ;
+; stack:Stack|mem~29                      ; Lost fanout        ;
+; stack:Stack|mem~13                      ; Lost fanout        ;
+; stack:Stack|mem~125                     ; Lost fanout        ;
+; stack:Stack|mem~109                     ; Lost fanout        ;
+; stack:Stack|mem~93                      ; Lost fanout        ;
+; stack:Stack|mem~77                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[14]           ; Lost fanout        ;
+; stack:Stack|mem~62                      ; Lost fanout        ;
+; stack:Stack|mem~46                      ; Lost fanout        ;
+; stack:Stack|mem~30                      ; Lost fanout        ;
+; stack:Stack|mem~14                      ; Lost fanout        ;
+; stack:Stack|mem~126                     ; Lost fanout        ;
+; stack:Stack|mem~110                     ; Lost fanout        ;
+; stack:Stack|mem~94                      ; Lost fanout        ;
+; stack:Stack|mem~78                      ; Lost fanout        ;
+; counter:ProgramCounter|pc[15]           ; Lost fanout        ;
+; stack:Stack|mem~63                      ; Lost fanout        ;
+; stack:Stack|mem~47                      ; Lost fanout        ;
+; stack:Stack|mem~31                      ; Lost fanout        ;
+; stack:Stack|mem~15                      ; Lost fanout        ;
+; stack:Stack|mem~127                     ; Lost fanout        ;
+; stack:Stack|mem~111                     ; Lost fanout        ;
+; stack:Stack|mem~95                      ; Lost fanout        ;
+; stack:Stack|mem~79                      ; Lost fanout        ;
+; a:Accumulator|zero                      ; Lost fanout        ;
+; Total Number of Removed Registers = 125 ;                    ;
++-----------------------------------------+--------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                           ;
++-------------------------------+--------------------+----------------------------------------------------------------------------------+
+; Register name                 ; Reason for Removal ; Registers Removed due to This Register                                           ;
++-------------------------------+--------------------+----------------------------------------------------------------------------------+
+; counter:ProgramCounter|pc[4]  ; Lost Fanouts       ; stack:Stack|mem~116, stack:Stack|mem~100, stack:Stack|mem~68, a:Accumulator|zero ;
+; counter:ProgramCounter|pc[5]  ; Lost Fanouts       ; stack:Stack|mem~117, stack:Stack|mem~101, stack:Stack|mem~69                     ;
+; counter:ProgramCounter|pc[6]  ; Lost Fanouts       ; stack:Stack|mem~118, stack:Stack|mem~102, stack:Stack|mem~70                     ;
+; counter:ProgramCounter|pc[7]  ; Lost Fanouts       ; stack:Stack|mem~119, stack:Stack|mem~103, stack:Stack|mem~71                     ;
+; counter:ProgramCounter|pc[8]  ; Lost Fanouts       ; stack:Stack|mem~120, stack:Stack|mem~104, stack:Stack|mem~72                     ;
+; counter:ProgramCounter|pc[9]  ; Lost Fanouts       ; stack:Stack|mem~121, stack:Stack|mem~105, stack:Stack|mem~73                     ;
+; counter:ProgramCounter|pc[10] ; Lost Fanouts       ; stack:Stack|mem~122, stack:Stack|mem~106, stack:Stack|mem~74                     ;
+; counter:ProgramCounter|pc[11] ; Lost Fanouts       ; stack:Stack|mem~123, stack:Stack|mem~107, stack:Stack|mem~75                     ;
+; counter:ProgramCounter|pc[12] ; Lost Fanouts       ; stack:Stack|mem~124, stack:Stack|mem~108, stack:Stack|mem~76                     ;
+; counter:ProgramCounter|pc[13] ; Lost Fanouts       ; stack:Stack|mem~125, stack:Stack|mem~109, stack:Stack|mem~77                     ;
+; counter:ProgramCounter|pc[14] ; Lost Fanouts       ; stack:Stack|mem~126, stack:Stack|mem~110, stack:Stack|mem~78                     ;
+; counter:ProgramCounter|pc[15] ; Lost Fanouts       ; stack:Stack|mem~127, stack:Stack|mem~111, stack:Stack|mem~79                     ;
++-------------------------------+--------------------+----------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -272,24 +456,70 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 12    ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 57    ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Asynchronous Clear ; 5     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 50    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: counter:ProgramCounter ;
-+----------------+-------+--------------------------------------------+
-; Parameter Name ; Value ; Type                                       ;
-+----------------+-------+--------------------------------------------+
-; WIDTH          ; 4     ; Signed Integer                             ;
-+----------------+-------+--------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; stack:Stack|empty                      ; 4       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                            ;
++----------------------------------+-------------------------------+------+
+; Register Name                    ; Megafunction                  ; Type ;
++----------------------------------+-------------------------------+------+
+; registers:Registers|out[0]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[1]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[2]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[3]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[4]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[5]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[6]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[7]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[8]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[9]~reg0  ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[10]~reg0 ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[11]~reg0 ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[12]~reg0 ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[13]~reg0 ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[14]~reg0 ; registers:Registers|mem_rtl_0 ; RAM  ;
+; registers:Registers|out[15]~reg0 ; registers:Registers|mem_rtl_0 ; RAM  ;
++----------------------------------+-------------------------------+------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |processor|counter:ProgramCounter|pc[12] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |processor|counter:ProgramCounter|pc[2]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |processor|stack:Stack|top[2]            ;
+; 1:1                ; 4 bits    ; 0 LEs         ; 0 LEs                ; 0 LEs                  ; No         ; |processor|comb                          ;
+; 19:1               ; 15 bits   ; 180 LEs       ; 150 LEs              ; 30 LEs                 ; No         ; |processor|alu:Alu|Selector11            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for registers:Registers|altsyncram:mem_rtl_0|altsyncram_43n1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
 
 
 +------------------------------------------------------+
@@ -297,7 +527,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------+
 ; Parameter Name ; Value ; Type                        ;
 +----------------+-------+-----------------------------+
-; RAM_WIDTH      ; 8     ; Signed Integer              ;
+; RAM_WORD_WIDTH ; 24    ; Signed Integer              ;
 ; RAM_ADDR_BITS  ; 4     ; Signed Integer              ;
 +----------------+-------+-----------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -308,7 +538,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------+
 ; Parameter Name ; Value ; Type                        ;
 +----------------+-------+-----------------------------+
-; WIDTH          ; 4     ; Signed Integer              ;
+; WIDTH          ; 16    ; Signed Integer              ;
 +----------------+-------+-----------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -318,37 +548,132 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------------+
 ; Parameter Name ; Value ; Type                              ;
 +----------------+-------+-----------------------------------+
-; WIDTH          ; 4     ; Signed Integer                    ;
+; WIDTH          ; 16    ; Signed Integer                    ;
 +----------------+-------+-----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------+
-; Parameter Settings for User Entity Instance: rf:Rf ;
-+----------------+-------+---------------------------+
-; Parameter Name ; Value ; Type                      ;
-+----------------+-------+---------------------------+
-; WIDTH          ; 4     ; Signed Integer            ;
-+----------------+-------+---------------------------+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: registers:Registers ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                          ;
+; REG_NUM        ; 16    ; Signed Integer                          ;
++----------------+-------+-----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mux2bit4:Mux"                                                                                                          ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; out  ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (1 bits) it drives; bit(s) "out[3..1]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux:Mux ;
++----------------+-------+-----------------------------+
+; Parameter Name ; Value ; Type                        ;
++----------------+-------+-----------------------------+
+; WIDTH          ; 16    ; Signed Integer              ;
++----------------+-------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "alu:Alu"                                                                                                                                   ;
-+------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                                                                                     ;
-+------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
-; in1  ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (4 bits) it drives.  Extra input bit(s) "in1[3..1]" will be connected to GND. ;
-+------+-------+----------+---------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: stack:Stack ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; WIDTH          ; 16    ; Signed Integer                  ;
+; DEPTH          ; 8     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: registers:Registers|altsyncram:mem_rtl_0 ;
++------------------------------------+----------------------+-------------------------------+
+; Parameter Name                     ; Value                ; Type                          ;
++------------------------------------+----------------------+-------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                       ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                    ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                  ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                  ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                       ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                       ;
+; WIDTH_A                            ; 16                   ; Untyped                       ;
+; WIDTHAD_A                          ; 4                    ; Untyped                       ;
+; NUMWORDS_A                         ; 16                   ; Untyped                       ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                       ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                       ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                       ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                       ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                       ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                       ;
+; WIDTH_B                            ; 16                   ; Untyped                       ;
+; WIDTHAD_B                          ; 4                    ; Untyped                       ;
+; NUMWORDS_B                         ; 16                   ; Untyped                       ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                       ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                       ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                       ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                       ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                       ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                       ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                       ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                       ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                       ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                       ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                       ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                       ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                       ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                       ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                       ;
+; BYTE_SIZE                          ; 8                    ; Untyped                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                       ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                       ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                       ;
+; INIT_FILE                          ; UNUSED               ; Untyped                       ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                       ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                       ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                       ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                       ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                       ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                       ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                       ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                       ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                       ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                       ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                       ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                       ;
+; CBXI_PARAMETER                     ; altsyncram_43n1      ; Untyped                       ;
++------------------------------------+----------------------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                     ;
++-------------------------------------------+------------------------------------------+
+; Name                                      ; Value                                    ;
++-------------------------------------------+------------------------------------------+
+; Number of entity instances                ; 1                                        ;
+; Entity Instance                           ; registers:Registers|altsyncram:mem_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                ;
+;     -- WIDTH_A                            ; 16                                       ;
+;     -- NUMWORDS_A                         ; 16                                       ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                             ;
+;     -- WIDTH_B                            ; 16                                       ;
+;     -- NUMWORDS_B                         ; 16                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                   ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                             ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                     ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                 ;
++-------------------------------------------+------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:Alu"                                                                                                                                         ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                      ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; overflow ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; funct    ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -356,19 +681,31 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 12                          ;
-;     plain             ; 12                          ;
-; arriav_lcell_comb     ; 14                          ;
-;     normal            ; 14                          ;
+; arriav_ff             ; 57                          ;
+;     CLR               ; 3                           ;
+;     ENA               ; 48                          ;
+;     ENA CLR           ; 2                           ;
+;     SCLR SLD          ; 4                           ;
+; arriav_lcell_comb     ; 155                         ;
+;     arith             ; 37                          ;
 ;         0 data inputs ; 1                           ;
+;         3 data inputs ; 24                          ;
+;         4 data inputs ; 10                          ;
+;         5 data inputs ; 2                           ;
+;     extend            ; 9                           ;
+;         7 data inputs ; 9                           ;
+;     normal            ; 109                         ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 1                           ;
-;         4 data inputs ; 7                           ;
-;         5 data inputs ; 4                           ;
-; boundary_port         ; 9                           ;
+;         2 data inputs ; 18                          ;
+;         3 data inputs ; 22                          ;
+;         4 data inputs ; 21                          ;
+;         5 data inputs ; 10                          ;
+;         6 data inputs ; 37                          ;
+; boundary_port         ; 18                          ;
+; stratixv_ram_block    ; 16                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 2.00                        ;
-; Average LUT depth     ; 1.04                        ;
+; Max LUT depth         ; 6.50                        ;
+; Average LUT depth     ; 4.49                        ;
 +-----------------------+-----------------------------+
 
 
@@ -377,7 +714,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -386,56 +723,191 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 22.1std.0 Build 915 10/25/2022 SC Standard Edition
-    Info: Processing started: Mon Nov  6 14:46:48 2023
+    Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+    Info: Processing started: Mon Jan 22 19:55:22 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off WdPM -c WdPM
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file counter.v
-    Info (12023): Found entity 1: counter File: /home/student/Projects/Quartus/WdPM/counter.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file rom.v
-    Info (12023): Found entity 1: rom File: /home/student/Projects/Quartus/WdPM/rom.v Line: 4
-Info (12021): Found 1 design units, including 1 entities, in source file id.v
-    Info (12023): Found entity 1: id File: /home/student/Projects/Quartus/WdPM/id.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file src/utils/stack.v
+    Info (12023): Found entity 1: stack File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 1
+Warning (12090): Entity "mux" obtained from "src/utils/mux.v" instead of from Quartus Prime megafunction library File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/mux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file src/utils/mux.v
+    Info (12023): Found entity 1: mux File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/mux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file src/memory/rom.v
+    Info (12023): Found entity 1: rom File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/rom.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file src/memory/registers.v
+    Info (12023): Found entity 1: registers File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 1
+Info (12021): Found 0 design units, including 0 entities, in source file src/control/instructions.v
+Info (12021): Found 1 design units, including 1 entities, in source file src/control/id.v
+    Info (12023): Found entity 1: id File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/id.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file src/control/counter.v
+    Info (12023): Found entity 1: counter File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file src/basic/alu.v
+    Info (12023): Found entity 1: alu File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file src/basic/a.v
+    Info (12023): Found entity 1: a File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/a.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file processor.v
-    Info (12023): Found entity 1: processor File: /home/student/Projects/Quartus/WdPM/processor.v Line: 1
-Info (12021): Found 0 design units, including 0 entities, in source file instructions.v
-Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: alu File: /home/student/Projects/Quartus/WdPM/alu.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file rf.v
-    Info (12023): Found entity 1: rf File: /home/student/Projects/Quartus/WdPM/rf.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file a.v
-    Info (12023): Found entity 1: a File: /home/student/Projects/Quartus/WdPM/a.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file mux2bit4.v
-    Info (12023): Found entity 1: mux2bit4 File: /home/student/Projects/Quartus/WdPM/mux2bit4.v Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at processor.v(45): created implicit net for "mux_out" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 45
+    Info (12023): Found entity 1: processor File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 3
 Info (12127): Elaborating entity "processor" for the top level hierarchy
-Info (12128): Elaborating entity "counter" for hierarchy "counter:ProgramCounter" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 28
-Warning (10230): Verilog HDL assignment warning at counter.v(10): truncated value with size 32 to match size of target (4) File: /home/student/Projects/Quartus/WdPM/counter.v Line: 10
-Info (12128): Elaborating entity "rom" for hierarchy "rom:Rom" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 33
-Warning (10030): Net "mem.data_a" at rom.v(17) has no driver or initial value, using a default initial value '0' File: /home/student/Projects/Quartus/WdPM/rom.v Line: 17
-Warning (10030): Net "mem.waddr_a" at rom.v(17) has no driver or initial value, using a default initial value '0' File: /home/student/Projects/Quartus/WdPM/rom.v Line: 17
-Warning (10030): Net "mem.we_a" at rom.v(17) has no driver or initial value, using a default initial value '0' File: /home/student/Projects/Quartus/WdPM/rom.v Line: 17
-Info (12128): Elaborating entity "id" for hierarchy "id:InstructionDecoder" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 42
-Info (12128): Elaborating entity "alu" for hierarchy "alu:Alu" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 49
-Info (12128): Elaborating entity "a" for hierarchy "a:Accumulator" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 56
-Info (12128): Elaborating entity "rf" for hierarchy "rf:Rf" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 63
-Info (12128): Elaborating entity "mux2bit4" for hierarchy "mux2bit4:Mux" File: /home/student/Projects/Quartus/WdPM/processor.v Line: 70
-Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "rom:Rom|mem" is uninferred due to inappropriate RAM size File: /home/student/Projects/Quartus/WdPM/rom.v Line: 17
-Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "counter" for hierarchy "counter:ProgramCounter" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 40
+Warning (10230): Verilog HDL assignment warning at counter.v(23): truncated value with size 32 to match size of target (16) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 23
+Info (12128): Elaborating entity "rom" for hierarchy "rom:Rom" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 44
+Warning (10030): Net "mem.data_a" at rom.v(13) has no driver or initial value, using a default initial value '0' File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/rom.v Line: 13
+Warning (10030): Net "mem.waddr_a" at rom.v(13) has no driver or initial value, using a default initial value '0' File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/rom.v Line: 13
+Warning (10030): Net "mem.we_a" at rom.v(13) has no driver or initial value, using a default initial value '0' File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/rom.v Line: 13
+Info (12128): Elaborating entity "id" for hierarchy "id:InstructionDecoder" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 58
+Info (12128): Elaborating entity "alu" for hierarchy "alu:Alu" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 66
+Warning (10240): Verilog HDL Always Construct warning at alu.v(15): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Warning (10034): Output port "overflow" at alu.v(11) has no driver File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 11
+Info (10041): Inferred latch for "out[0]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[1]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[2]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[3]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[4]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[5]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[6]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[7]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[8]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[9]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[10]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[11]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[12]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[13]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[14]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (10041): Inferred latch for "out[15]" at alu.v(15) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+Info (12128): Elaborating entity "a" for hierarchy "a:Accumulator" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 74
+Warning (10230): Verilog HDL assignment warning at a.v(18): truncated value with size 32 to match size of target (1) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/a.v Line: 18
+Info (12128): Elaborating entity "registers" for hierarchy "registers:Registers" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 83
+Info (12128): Elaborating entity "mux" for hierarchy "mux:Mux" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 90
+Info (12128): Elaborating entity "stack" for hierarchy "stack:Stack" File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/processor.v Line: 101
+Warning (10230): Verilog HDL assignment warning at stack.v(36): truncated value with size 32 to match size of target (3) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 36
+Warning (10230): Verilog HDL assignment warning at stack.v(44): truncated value with size 32 to match size of target (3) File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 44
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "stack:Stack|mem" is uninferred due to asynchronous read logic File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 15
+    Info (276004): RAM logic "rom:Rom|mem" is uninferred due to inappropriate RAM size File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/rom.v Line: 13
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/db/WdPM.ram0_rom_510e4555.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[15]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[14]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[13]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[12]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[11]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[10]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[9]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[8]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[7]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[6]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[5]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[4]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[3]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[2]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[0]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "stack:Stack|data_out[1]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/utils/stack.v Line: 11
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[0]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[1]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[2]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[3]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[4]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[5]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[6]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[7]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[8]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[9]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[10]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[11]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[12]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[13]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[14]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+    Warning (13049): Converted tri-state buffer "registers:Registers|out[15]" feeding internal logic into a wire File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/memory/registers.v Line: 15
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "registers:Registers|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 4
+        Info (286033): Parameter NUMWORDS_A set to 16
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 4
+        Info (286033): Parameter NUMWORDS_B set to 16
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "registers:Registers|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "registers:Registers|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "4"
+    Info (12134): Parameter "NUMWORDS_A" = "16"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "4"
+    Info (12134): Parameter "NUMWORDS_B" = "16"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_43n1.tdf
+    Info (12023): Found entity 1: altsyncram_43n1 File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/db/altsyncram_43n1.tdf Line: 28
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch alu:Alu|out[0] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[1] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[2] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[3] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[4] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[5] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[6] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[7] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[8] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[9] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[10] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[11] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[12] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[13] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[14] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
+Warning (13012): Latch alu:Alu|out[15] has unsafe behavior File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/basic/alu.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal counter:ProgramCounter|pc[0] File: D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/src/control/counter.v Line: 14
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 3 registers lost all their fanouts during netlist optimizations.
+Info (17049): 125 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/output_files/WdPM.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 25 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 16 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 497 megabytes
-    Info: Processing ended: Mon Nov  6 14:46:53 2023
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:12
+Info (21057): Implemented 237 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 203 logic cells
+    Info (21064): Implemented 16 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 78 warnings
+    Info: Peak virtual memory: 4878 megabytes
+    Info: Processing ended: Mon Jan 22 19:56:06 2024
+    Info: Elapsed time: 00:00:44
+    Info: Total CPU time (on all processors): 00:00:37
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/Programy/Quartus-lite-22.1std.1.917-windows/projects/WdPM/output_files/WdPM.map.smsg.
 
 

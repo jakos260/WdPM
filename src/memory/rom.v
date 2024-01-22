@@ -38,6 +38,25 @@ initial begin
 	mem [13]  	= {`ADD,	16'h1};
 	mem [14]  	= {`ST,		16'h2};
 	mem [15]  	= {`RET,	16'h0};
+
+	
+	//test 3
+	// mem [0]  	= {`NOP,	16'h0};
+	// mem [1]		= {`CLL,	16'd4};
+	// mem [2]  	= {`RST, 	16'h0};
+
+	// mem [4] 	= {`LDI,	16'h1};
+	// mem [5]  	= {`ST,		16'h3};
+	// mem [6]  	= {`ST,		16'h2};
+	// mem [7] 	= {`LDI,	16'h5};
+	// mem [8]  	= {`ST,		16'h0};
+	// mem [9]  	= {`LD,		16'h3};
+	// mem [10]  	= {`ADD,	16'h2};
+	// mem [11]  	= {`ST,		16'h2};
+	// mem [12]  	= {`LD,		16'h0};
+	// mem [13]  	= {`DEC,	16'h0};
+	// mem [14]  	= {`JMA,	16'h8};
+	// mem [15]  	= {`RET,	16'h0};
 end
 
 always @(*) begin

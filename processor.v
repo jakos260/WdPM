@@ -19,7 +19,7 @@ module processor(clk_in, rst_in, out);
 	wire[7:0] op;
 
 	wire r_or_w;
-	wire alu_zero;
+	wire acu_zero;
 	wire alu_overflow;
 
 	wire stack_push, stack_pop, stack_full, stack_empty;
@@ -46,6 +46,7 @@ module processor(clk_in, rst_in, out);
 	id InstructionDecoder(
 		.instr(rom_data[23:16]),
 		.op(op),
+		.acu_zero(acu_zero),
 		.rst(rst_id),
 		.ldi(ldi),
 		.acu_en(acu_en),
@@ -60,7 +61,6 @@ module processor(clk_in, rst_in, out);
 		.in1(mux_out),
 		.in2(reg_out),
 		.op(op),
-	    .zero(alu_zero),
 	    .overflow(alu_overflow),
 		.out(alu_out)
 	);
@@ -69,12 +69,13 @@ module processor(clk_in, rst_in, out);
 		.clk(clk_in),
 		.ce(acu_en),
 		.in(alu_out),
+		.zero(acu_zero),
 		.out(acu_out)
 	);
 
 	registers #(.REG_NUM(16), .WIDTH(16)) Registers(
 		.clk(clk_in),
-		.rf_en(rf_en),
+		.en(rf_en),
 		.r_or_w(r_or_w),
 		.reg_addr(rf_en ? rom_data[15:0] : 16'bz),
 		.in(acu_out),

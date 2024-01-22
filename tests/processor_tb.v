@@ -35,7 +35,7 @@ initial begin
     // Use the monitor task to display the FPGA IO
     // $monitor("time=%3d, q=%2b \n", $time, out);
     // Generate each input with a 20 ns delay between them
-    for (i = 0; i<50; i++) begin
+    for (i = 0; i<100; i++) begin
         #1 clk = ~clk;        
     end
     #1   
