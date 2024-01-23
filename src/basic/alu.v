@@ -1,12 +1,11 @@
 `include "./src/control/instructions.v"
 
-module alu(in1, in2, op, funct, overflow, out);
+module alu(in1, in2, op, overflow, out);
 
 parameter WIDTH = 16;
 
 input [WIDTH-1:0] in1, in2;
 input [7:0] op;
-input funct;
 
 output reg overflow;
 output reg [WIDTH-1:0] out;
