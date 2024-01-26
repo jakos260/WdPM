@@ -1,0 +1,87 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Fri Jan 26 20:40:00 2024
+[*]
+[dumpfile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\up_tb.vcd"
+[dumpfile_mtime] "Fri Jan 26 20:39:25 2024"
+[dumpfile_size] 10568
+[savefile] "D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\processor_tb.sav"
+[timestart] 0
+[size] 1536 801
+[pos] -1 -1
+*-12.577833 3690 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] processor_tb.
+[treeopen] processor_tb.P.
+[sst_width] 197
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 223
+@22
+processor_tb.P.pc_bits[7:0]
+@28
+processor_tb.P.clk_in
+@22
+[color] 7
+processor_tb.P.rom_data[23:0]
+@2022
+[color] 7
+^1 D:\Programy\Quartus-lite-22.1std.1.917-windows\projects\WdPM\tests\opcodes.gtkw
+processor_tb.P.op[7:0]
+@28
+processor_tb.P.acu_en
+processor_tb.P.jmp_en
+processor_tb.P.ldi
+processor_tb.P.rf_en
+processor_tb.P.io_en
+processor_tb.P.r_or_w
+[color] 2
+processor_tb.P.rst
+@200
+-
+@22
+[color] 5
+processor_tb.P.out[15:0]
+processor_tb.P.acu_out[15:0]
+processor_tb.P.alu_out[15:0]
+processor_tb.P.reg_out[15:0]
+processor_tb.P.Registers.reg_addr[15:0]
+@200
+-
+@28
+processor_tb.P.stack_empty
+processor_tb.P.stack_full
+processor_tb.P.stack_pop
+processor_tb.P.stack_push
+@200
+-
+@22
+processor_tb.P.IO_Ports.io_addr[3:0]
+processor_tb.P.IO_Ports.data_in[15:0]
+@c00023
+processor_tb.P.IO_Ports.data_out[15:0]
+@28
+(0)processor_tb.P.IO_Ports.data_out[15:0]
+(1)processor_tb.P.IO_Ports.data_out[15:0]
+(2)processor_tb.P.IO_Ports.data_out[15:0]
+(3)processor_tb.P.IO_Ports.data_out[15:0]
+(4)processor_tb.P.IO_Ports.data_out[15:0]
+(5)processor_tb.P.IO_Ports.data_out[15:0]
+(6)processor_tb.P.IO_Ports.data_out[15:0]
+(7)processor_tb.P.IO_Ports.data_out[15:0]
+(8)processor_tb.P.IO_Ports.data_out[15:0]
+(9)processor_tb.P.IO_Ports.data_out[15:0]
+(10)processor_tb.P.IO_Ports.data_out[15:0]
+(11)processor_tb.P.IO_Ports.data_out[15:0]
+(12)processor_tb.P.IO_Ports.data_out[15:0]
+(13)processor_tb.P.IO_Ports.data_out[15:0]
+(14)processor_tb.P.IO_Ports.data_out[15:0]
+(15)processor_tb.P.IO_Ports.data_out[15:0]
+@1401201
+-group_end
+@28
+processor_tb.P.d0_io
+processor_tb.P.d1_io
+processor_tb.P.d2_io
+processor_tb.P.d3_io
+[pattern_trace] 1
+[pattern_trace] 0

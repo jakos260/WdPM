@@ -12,3 +12,7 @@
 
 ./src/utils/mux.v
 ./src/utils/stack.v
+
+./src/io/io_ports.v
+./src/io/analog_io.v
+./src/io/digital_io.v

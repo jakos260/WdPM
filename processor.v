@@ -1,20 +1,27 @@
 `timescale 1ns/1ps
 
-module processor(clk_in, rst_in, out);
+module processor(clk_in, rst_in, out, d0_io, d1_io, d2_io, d3_io);
 
 	input clk_in;
 	input rst_in;
 	output reg [15:0] out;
 
+	inout			d0_io;
+	inout			d1_io;
+	inout			d2_io;
+	inout			d3_io;
+
 	reg rst = 1'b0;
 
-	wire rst_id, ldi, acu_en, rf_en, jmp_en;
+	wire rst_id, ldi, acu_en, rf_en, io_en, jmp_en;
 	wire[7:0] pc_bits;
 	wire[23:0] rom_data; // 8op + 16data
 	wire[15:0] alu_out;
 	wire[15:0] acu_out;
 	wire[15:0] reg_out;
-	wire[15:0] mux_out;
+	wire[15:0] io_out;
+	wire[15:0] acu_rom_out; // mux of acu and rom
+	wire[15:0] rf_io_out; 	// mux of rf  and io
 
 	wire[7:0] op;
 
@@ -28,7 +35,7 @@ module processor(clk_in, rst_in, out);
 	initial out <= 16'd0;
 	always @(*) begin
 		rst <= rst_in || rst_id;
-		out <= alu_out;
+		out <= acu_out;
 	end
 
 	counter ProgramCounter(
@@ -53,6 +60,7 @@ module processor(clk_in, rst_in, out);
 		.ldi(ldi),
 		.acu_en(acu_en),
 		.rf_en(rf_en),
+		.io_en(io_en),
 		.jmp_en(jmp_en),
 		.r_or_w(r_or_w),
 		.stack_flags({stack_full, stack_empty}),
@@ -60,8 +68,8 @@ module processor(clk_in, rst_in, out);
 	);
 
 	alu #(.WIDTH(16)) Alu(
-		.in1(mux_out),
-		.in2(reg_out),
+		.in1(acu_rom_out),
+		.in2(rf_io_out),
 		.op(op),
 	    .overflow(alu_overflow),
 		.out(alu_out)
@@ -84,11 +92,31 @@ module processor(clk_in, rst_in, out);
 		.out(reg_out)
 	);
 
-	mux #(.WIDTH(16)) Mux(
+	io_ports IO_Ports(
+		.clk(clk_in),
+		.en(io_en),
+		.r_or_w(r_or_w),
+		.io_addr(io_en ? rom_data[3:0] : 4'bz),
+		.data_in(acu_out),
+		.data_out(io_out),
+		.d0_io(d0_io),
+		.d1_io(d1_io),
+		.d2_io(d2_io),
+		.d3_io(d3_io)
+	);
+
+	mux #(.WIDTH(16)) Mux_acu_rom(
 		.in1(acu_out),
 		.in2(rom_data[15:0]),
-		.out(mux_out),
+		.out(acu_rom_out),
 		.sel(ldi)
+	);
+
+	mux #(.WIDTH(16)) Mux_rf_io(
+		.in1(reg_out),
+		.in2(io_out),
+		.out(rf_io_out),
+		.sel(io_en)
 	);
 
 	stack #(.WIDTH(8)) Stack(
