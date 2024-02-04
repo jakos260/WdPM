@@ -13,8 +13,9 @@ output reg [RAM_WORD_WIDTH-1 : 0] data;
 
 reg [RAM_WORD_WIDTH-1:0] mem [(2**RAM_ADDR_BITS)-1:0];
 
-// test
 initial begin
+	mem[0] = {`NOP, 16'h0};
+	$readmemh("./programs/prog.bin", mem, 1);
 	// test 1
 	// mem [0]  = {`NOP,	16'h0};
 	// mem [1]  = {`LDI,	16'h5};
@@ -61,24 +62,24 @@ initial begin
 	// mem [15]  	= {`RET,	16'h0};
 
 	// test 4
-	mem [0]  	= {`NOP,	16'h0};
-	mem [1]  	= {`IOR,	16'h2};
-	mem [2]  	= {`ST,		16'd12};
-	mem [3]  	= {`IOR,	16'h3};
-	mem [4]  	= {`AND,	16'd12};
-	mem [5]  	= {`IOW,	16'h0};
-	mem [6]  	= {`NOT,	16'h0};
-	mem [7]  	= {`IOW,	16'h1};
-	mem [8]		= {`CLL,	16'd20};
-	mem [9]  	= {`LD, 	16'h2};
-	mem [10]  	= {`RST, 	16'h0};
+	// mem [0]  	= {`NOP,	16'h0};
+	// mem [1]  	= {`IOR,	16'h2};
+	// mem [2]  	= {`ST,		16'd12};
+	// mem [3]  	= {`IOR,	16'h3};
+	// mem [4]  	= {`AND,	16'd12};
+	// mem [5]  	= {`IOW,	16'h0};
+	// mem [6]  	= {`NOT,	16'h0};
+	// mem [7]  	= {`IOW,	16'h1};
+	// mem [8]		= {`CLL,	16'd20};
+	// mem [9]  	= {`LD, 	16'h2};
+	// mem [10]  	= {`RST, 	16'h0};
 	
-	mem [20] 	= {`LDI,	16'h5};
-	mem [21]  	= {`ST,		16'h1};
-	mem [22]  	= {`LDI,	16'h3};
-	mem [23]  	= {`ADD,	16'h1};
-	mem [24]  	= {`ST,		16'h2};
-	mem [25]  	= {`RET,	16'h0};
+	// mem [20] 	= {`LDI,	16'h5};
+	// mem [21]  	= {`ST,		16'h1};
+	// mem [22]  	= {`LDI,	16'h3};
+	// mem [23]  	= {`ADD,	16'h1};
+	// mem [24]  	= {`ST,		16'h2};
+	// mem [25]  	= {`RET,	16'h0};
 end
 
 always @(*) begin
