@@ -83,11 +83,11 @@ module processor(clk_in, rst_in, out, d0_io, d1_io, d2_io, d3_io);
 		.out(acu_out)
 	);
 
-	registers #(.REG_NUM(16), .WIDTH(16)) Registers(
+	registers #(.REG_ADDR_BITS(4), .WIDTH(16)) Registers(
 		.clk(clk_in),
 		.en(rf_en),
 		.r_or_w(r_or_w),
-		.reg_addr(rf_en ? rom_data[15:0] : 16'bz),
+		.reg_addr(rf_en ? rom_data[3:0] : 4'bz),
 		.in(acu_out),
 		.out(reg_out)
 	);
