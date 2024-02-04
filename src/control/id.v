@@ -29,17 +29,18 @@ module id (instr, op, acu_zero, ldi, rf_en, io_en, r_or_w, acu_en, rst, jmp_en, 
             8'h07:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_000_000, `RL};  // rl
             8'h08:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_000_000, `DEC}; // dec
             8'h09:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_000_000, `INC}; // inc
-            8'h0A:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_000_100, `JMP}; // jmp
-            8'h0B:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {6'b0_0_0_000, ~acu_zero, 2'b00, `JMA}; // jmp (if acu != 0)
-            8'h0C:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {7'b0_0_0_000_1, stack_flags[1] == 0 ? 2'b10 : 2'b00, `CLL}; // call (push stack if not full)
-            8'h0D:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {7'b0_0_0_000_1, stack_flags[0] == 0 ? 2'b01 : 2'b00, `RET}; // return (pop stack if not empty)
-            8'h0E:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_100_000, `LD};  // ld
-            8'h0F:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_101_000, `ST};  // st
-            8'h10:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_010_000, `IOR}; // ior
-            8'h11:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_011_000, `IOW}; // iow
-            8'h12:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_1_000_000, `LDI}; // ldi
-            8'h13:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_000_000, `NOP}; // nop
-            8'h14:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b1_0_0_000_000, `RST}; // rst
+            8'h0A:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_100_000, `CMP}; // cmp
+            8'h0B:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_000_100, `JMP}; // jmp
+            8'h0C:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {6'b0_0_0_000, ~acu_zero, 2'b00, `JMA}; // jmp (if acu != 0)
+            8'h0D:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {7'b0_0_0_000_1, stack_flags[1] == 0 ? 2'b10 : 2'b00, `CLL}; // call (push stack if not full)
+            8'h0E:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {7'b0_0_0_000_1, stack_flags[0] == 0 ? 2'b01 : 2'b00, `RET}; // return (pop stack if not empty)
+            8'h0F:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_100_000, `LD};  // ld
+            8'h10:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_101_000, `ST};  // st
+            8'h11:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_0_010_000, `IOR}; // ior
+            8'h12:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_011_000, `IOW}; // iow
+            8'h13:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_1_1_000_000, `LDI}; // ldi
+            8'h14:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_000_000, `NOP}; // nop
+            8'h15:    {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b1_0_0_000_000, `RST}; // rst
             default:  {rst, acu_en, ldi, rf_en, io_en, r_or_w, jmp_en, stack_control, op} <= {9'b0_0_0_000_000, `NOP}; // nop
         endcase
     end

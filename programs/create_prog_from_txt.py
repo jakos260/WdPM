@@ -60,9 +60,9 @@ def compile_program(input_file, output_file, opcodes):
         output_file.write(program)
 
 if __name__ == "__main__":
-    opcodes_file = "./plc_prog/plc_prog_defines.txt"
-    input_file = "./plc_prog/prog_plc.txt"
-    output_file = "./plc_prog/prog.bin"
+    opcodes_file = "./programs/prog_defines.txt"
+    input_file = "./programs/prog.txt"
+    output_file = "./programs/prog.bin"
 
     opcodes = load_opcodes(opcodes_file)
     compile_program(input_file, output_file, opcodes)

@@ -4,7 +4,7 @@ parameter WIDTH = 4;
 
 input ce, clk;
 input [WIDTH-1:0] in;
-output reg zero;
+output zero;
 output reg [WIDTH-1:0] out;
 
 initial begin

@@ -82,7 +82,7 @@ initial begin
 	// mem [25]  	= {`RET,	16'h0};
 end
 
-always @(*) begin
+always @(negedge clk) begin
     data <= mem[addr];
 end
 

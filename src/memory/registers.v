@@ -1,14 +1,14 @@
 module registers(clk, en, r_or_w, reg_addr, in, out);
 
     parameter WIDTH = 16;
-    parameter REG_NUM = 16;
+    parameter REG_ADDR_BITS = 16;
 
     input clk, en, r_or_w; // r_or_w => 1 = write, 0 = read
-    input [REG_NUM-1:0] reg_addr;
+    input [REG_ADDR_BITS-1:0] reg_addr;
     input [WIDTH-1:0] in;
     output reg [WIDTH-1:0] out;
 
-    reg [WIDTH-1:0] mem [REG_NUM-1:0];
+    reg [WIDTH-1:0] mem [(REG_ADDR_BITS**2)-1:0];
 
     initial out <= 16'dz;
 

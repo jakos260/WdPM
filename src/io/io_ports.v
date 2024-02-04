@@ -25,7 +25,7 @@ module io_ports(
     wire            d2_out;
     wire            d3_out;
 
-    always @(*) begin
+    always @(negedge clk) begin
         if(en) begin
             case(io_addr)
                 4'b0000: data_out <= {15'd0, d0_out};

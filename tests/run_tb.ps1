@@ -5,6 +5,7 @@ param (
 )
 # Remove-Item -Path ./tests/up_tb.vvp
 # Remove-Item -Path ./tests/up_tb.vcd
+python .\programs\create_prog_from_txt.py
 
 $files = Get-Content $files_to_tb_path
 iverilog -o tests/up_tb.vvp ./tests/processor_tb.v $files
