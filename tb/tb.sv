@@ -1,4 +1,4 @@
-program test(fifo_intf intf);
+program test(acualu_intf intf);
   environment env;
   
   initial 
@@ -26,7 +26,7 @@ module testbench_top;
     end
     
     //interface
-    acualu_intf intf(clk, ce, zero, op, in, out);
+    acualu_intf intf(clk, rst);
     
     //testcase
     test test1(intf);
