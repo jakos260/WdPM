@@ -39,21 +39,14 @@ class scoreboard;
     begin
       #50;
       mon_mbx.get(trans);
-      if(trans.op)
+      if(trans.op) // use always(negedge clk) ?
       begin
-        if(mem[read_pointer] != trans.data_out) 
-          $error("[SCOREBOARD] Data Expected = %0h Data Actual = %0h",mem[read_pointer],trans.data_out);
+        if(data_out != trans.data_out) 
+          $error("[SCOREBOARD] OPcode = %0h IN = %0h Data Expected = %0h Data Actual = %0h", op, data_in, data_out, trans.data_out);
         else 
         begin
-          $display(("[SCOREBOARD] Data Expected = %0h Data Actual = %0h",mem[read_pointer],trans.data_out);
-          //pointer mechanics, etc.
+          $display("[SCOREBOARD] OPcode = %0h IN = %0h Data Expected = %0h Data Actual = %0h", op, data_in, data_out, trans.data_out);
         end
-      end
-      else 
-      if(trans.push)
-      begin
-        mem[write_pointer] = trans.data_in;
-        //pointer mechanics, etc.
       end
 
       trans_cnt++;
