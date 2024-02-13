@@ -21,7 +21,7 @@ module stack (clk, rst, push, pop, data_in, data_out, full, empty);
         empty <= 1;
     end
 
-    assign data_out = top > 3'b000 ? mem[top-1] : 16'dz;
+    assign data_out = top > 3'b000 ? mem[top-1] : 16'd0;
 
     always @(negedge clk or posedge rst) begin
         if (rst) begin

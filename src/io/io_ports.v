@@ -32,11 +32,11 @@ module io_ports(
                 4'b0001: data_out <= {15'd0, d1_out};
                 4'b0010: data_out <= {15'd0, d2_out};
                 4'b0011: data_out <= {15'd0, d3_out};
-                default: data_out <= 16'dz;
+                default: data_out <= 16'd0;
             endcase
         end
         else
-            data_out <= 16'dz;
+            data_out <= 16'd0;
     end
     
     digital_io D0 (

@@ -10,19 +10,19 @@ module registers(clk, en, r_or_w, reg_addr, in, out);
 
     reg [WIDTH-1:0] mem [(REG_ADDR_BITS**2)-1:0];
 
-    initial out <= 16'dz;
+    initial out <= 16'd0;
 
     always @(*) begin
         if(en) begin        
             if(r_or_w) begin // write
                 mem[reg_addr] <= in;
-                out <= 16'dz;
+                out <= 16'd0;
             end
             else begin //read
                 out <= mem[reg_addr];
             end
         end
-        else out <= 16'dz;
+        else out <= 16'd0;
     end
 
 endmodule

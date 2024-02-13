@@ -11,15 +11,15 @@ module analog_io(clk, en, direction, data_in, data_out, io_port);
     reg [BITS-1:0] a;
     reg [BITS-1:0] b;    
 
-    assign io_port  = en ? (direction ? a : 16'bz) : io_port;
+    assign io_port  = en ? (direction ? a : 16'b0) : io_port;
     assign data_out = b;
 
     initial begin
-        a = 16'dz;
-        b = 16'dz;
+        a = 16'd0;
+        b = 16'd0;
     end
 
-    always @ (*) begin
+    always @ (posedge clk) begin
         if(en) begin
             b <= io_port;
             a <= data_in;
