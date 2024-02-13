@@ -5,6 +5,6 @@ class transaction;
   rand bit        op;
 
   //example constaint
-  constraint op_constr { op < 8'h16; }; // max opcode, 
+  // constraint op_constr { op < 8'h16; }; // max opcode
 
 endclass

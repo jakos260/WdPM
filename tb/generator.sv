@@ -1,15 +1,16 @@
 class generator;
-    rand transaction trans;
-    mailbox gen_mbx;
-    event trans_rdy;
-    int  repeat_tests;  
+    rand transaction    trans;
+    mailbox             gen_mbx;
+    event               trans_rdy;
+    int                 repeat_tests; 
+    
     //constructor
     function new(mailbox gen_mbx,event trans_rdy);
         this.gen_mbx = gen_mbx;
         this.trans_rdy    = trans_rdy;
     endfunction
     
-    //++
+
     task main();
         repeat(repeat_tests)
         begin

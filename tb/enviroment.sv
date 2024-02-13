@@ -1,11 +1,13 @@
+`timescale 1ns/100ps
+
 class environment;
-    generator gen;
-    driver    driv;
-    monitor   mon;
-    scoreboard scb;
-    mailbox   env_mbx_drv;
-    mailbox   env_mbx_mon;
-    event gen_ended;
+    generator   gen;
+    driver      driv;
+    monitor     mon;
+    scoreboard  scb;
+    mailbox     env_mbx_drv;
+    mailbox     env_mbx_mon;
+    event       gen_ended;
     virtual acualu_intf acualu_virt_intf;
     
 function new(virtual acualu_intf acualu_virt_intf);
@@ -46,3 +48,14 @@ function new(virtual acualu_intf acualu_virt_intf);
   endtask
   
 endclass
+
+
+program test(acualu_intf intf);
+  environment env;
+
+  initial begin
+    env = new(intf);
+    env.gen.repeat_tests = 256;
+    env.run()
+  end
+endprogram

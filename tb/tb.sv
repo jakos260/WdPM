@@ -21,8 +21,8 @@ module testbench_top;
     begin
         clr = 1;
     	rst = 0;
-        #5 rst = 1;
-        #5 rst = 0;
+        #10 rst = 1;
+        #10 rst = 0;
     end
     
     //interface
@@ -40,11 +40,5 @@ module testbench_top;
         .in(intf.data_in),
         .out(intf.data_out)
     );
-    
-    //enabling the wave dump
-    initial
-    begin 
-        $dumpfile("dump.vcd"); $dumpvars;
-    end
 
 endmodule

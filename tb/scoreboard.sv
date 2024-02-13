@@ -2,8 +2,9 @@
 `include "./tb/ref/alu_ref.v"
 
 class scoreboard;
-  mailbox mon_mbx;
-  int trans_cnt;
+  mailbox     mon_mbx;
+  transaction trans;
+  int         trans_cnt;
 
 
   //ref AcuAlu model
@@ -25,31 +26,30 @@ class scoreboard;
 		.out(data_out));
 
   
-  
   //constructor
   function new(mailbox mon_mbx);
-    this.mon_mbx = mon_mbx;
-    // nothing?
+    this.mon_mbx  = mon_mbx;
+    trans_cnt     = 0;
   endfunction
   
   //stores 
   task main;
-    transaction trans;
     forever
     begin
       #50;
       mon_mbx.get(trans);
-      if(trans.op) // use always(negedge clk) ?
-      begin
-        if(data_out != trans.data_out) 
-          $error("[SCOREBOARD] OPcode = %0h IN = %0h Data Expected = %0h Data Actual = %0h", op, data_in, data_out, trans.data_out);
-        else 
-        begin
-          $display("[SCOREBOARD] OPcode = %0h IN = %0h Data Expected = %0h Data Actual = %0h", op, data_in, data_out, trans.data_out);
-        end
-      end
 
-      trans_cnt++;
+      // reference model handling
+      data_in = trans.data_in;
+      op = trans.op;
+
+      // data comparison
+      if(data_out != trans.data_out || zero != trans.zero) 
+        $error("[SCOREBOARD] OPcode = %0h IN = %0h Data Expected = %0h Data Actual = %0h Zero Expected = %0b Zero Actual = %0b \n", op, data_in, data_out, trans.data_out, zero, trans.zero);
+      else
+        $display("[SCOREBOARD] OPcode = %0h IN = %0h Data = %0h Zero = %0b \n", op, data_in, data_out, zero);
+    
+      trans_cnt++; 
     end
   endtask
   

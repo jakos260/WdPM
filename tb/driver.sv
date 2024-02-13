@@ -10,7 +10,7 @@ int trans_cnt; //number of transactions
   endfunction
   
   
-  //Reset task
+  // Reset task
   task reset;
     wait(acualu_virt_intf.rst);
     $display("[DRIVER] reset started");
@@ -20,23 +20,19 @@ int trans_cnt; //number of transactions
     $display("[DRIVER] reset finished");
   endtask
   
-  //++
+  // Drive task
   task drive;
     forever
     begin
       transaction trans;
 
-      acualu_virt_intf.driver_mode.driver_clk_block.data_in <= 0;
-      acualu_virt_intf.driver_mode.driver_clk_block.op <= 8'h15;
       drv_mbx.get(trans);
       $display("[DRIVER] transfer: %0d ]", trans_cnt);
       
       @(posedge acualu_virt_intf.driver_mode.clk);
-      begin
-        acualu_virt_intf.driver_mode.driver_clk_block.data_in <= trans.data_in;
-        acualu_virt_intf.driver_mode.driver_clk_block.op <= trans.op;
-      end
-      
+
+      acualu_virt_intf.driver_mode.driver_clk_block.data_in <= trans.data_in;
+      acualu_virt_intf.driver_mode.driver_clk_block.op <= trans.op;      
       trans_cnt++;
 
     end
