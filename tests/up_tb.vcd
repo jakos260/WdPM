@@ -1,5 +1,5 @@
 $date
-	Mon Feb 05 00:39:09 2024
+	Tue Feb 13 01:27:53 2024
 $end
 $version
 	Icarus Verilog
@@ -206,18 +206,18 @@ $end
 #0
 $dumpvars
 b0 }
-bz z
+b0 z
 b0 y
 bx x
 b0 u
-bz t
-bz q
+b0 t
+b0 q
 b0 p
 b0 o
 bz n
-bz m
-bz k
-bz j
+b0 m
+b0 k
+b0 j
 b0 i
 bx g
 b0 f
@@ -241,17 +241,17 @@ zU
 zT
 0S
 0R
-bz Q
+b0 Q
 zO
 zN
 zM
 zL
-bz K
+b0 K
 0J
 b0 I
 bx H
 b0 F
-bz E
+b0 E
 b10100 D
 b0 C
 bx A
@@ -264,16 +264,16 @@ b0 <
 bx :
 x9
 08
-bz 7
+b0 7
 06
 05
 b10100 4
 b0 3
 02
-bz 1
-bz 0
+b0 1
+b0 0
 0/
-bz .
+b0 .
 bx -
 0,
 1+
@@ -303,12 +303,9 @@ b1 '
 b10 '
 1%
 #3000
-0\
-1M
-1]
-bz :
-bz A
-bz H
+b0 :
+b0 A
+b0 H
 1!
 1[
 b10 K
@@ -328,6 +325,9 @@ b10 y
 b11 '
 0%
 #4000
+0\
+1M
+1]
 b100 '
 1%
 #5000
@@ -340,36 +340,21 @@ b1 q
 b10000 4
 b10000 D
 b10000 d
-z\
-bz <
-bz F
-bz i
-bz ?
-bz .
-bz E
-bz m
+b0 .
+b0 E
+b0 m
 z#
 0W
 0[
-bz K
+b0 K
 b1 g
 b10000 b
-x;
-zR
-zV
-zZ
-z^
 b11 3
 b11 o
 b11 u
 b11 y
 b100000000000000000001 -
 b100000000000000000001 x
-bz =
-bz C
-bz I
-bz f
-bz p
 b1 7
 b1 Q
 b1 j
@@ -393,12 +378,12 @@ b11 i
 b10011 4
 b10011 D
 b10011 d
-bz q
+b0 q
 b11 g
 b10011 b
-bz 7
-bz Q
-bz j
+b0 7
+b0 Q
+b0 j
 b100110000000000000011 -
 b100110000000000000011 x
 b100 3
@@ -446,7 +431,6 @@ b1001 '
 b1010 '
 1%
 #11000
-b0 q
 0>
 1/
 1J
@@ -488,7 +472,7 @@ b100 n
 b1100 4
 b1100 D
 b1100 d
-bz q
+b0 q
 b100 g
 b1100 b
 b111 3
@@ -542,7 +526,6 @@ b10001 '
 b10010 '
 1%
 #19000
-b0 q
 0>
 1/
 1J
@@ -584,7 +567,7 @@ b100 n
 b1100 4
 b1100 D
 b1100 d
-bz q
+b0 q
 b100 g
 b1100 b
 b111 3
@@ -638,7 +621,6 @@ b11001 '
 b11010 '
 1%
 #27000
-b0 q
 0>
 1/
 1J
@@ -679,7 +661,7 @@ b11100 '
 b1100 4
 b1100 D
 b1100 d
-bz q
+b0 q
 b100 g
 b1100 b
 b111 3
