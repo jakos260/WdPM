@@ -11,7 +11,7 @@ module io_ports(
 
     wire direction;
     assign direction = r_or_w;
-    initial data_out = 16'dz;
+    initial data_out = 16'd0;
 
     // io list
     inout            d0_io;

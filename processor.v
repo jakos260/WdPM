@@ -87,7 +87,7 @@ module processor(clk_in, rst_in, out, d0_io, d1_io, d2_io, d3_io);
 		.clk(clk_in),
 		.en(rf_en),
 		.r_or_w(r_or_w),
-		.reg_addr(rf_en ? rom_data[3:0] : 4'bz),
+		.reg_addr(rf_en ? rom_data[3:0] : 4'b0),
 		.in(acu_out),
 		.out(reg_out)
 	);
@@ -96,7 +96,7 @@ module processor(clk_in, rst_in, out, d0_io, d1_io, d2_io, d3_io);
 		.clk(clk_in),
 		.en(io_en),
 		.r_or_w(r_or_w),
-		.io_addr(io_en ? rom_data[3:0] : 4'bz),
+		.io_addr(io_en ? rom_data[3:0] : 4'b0),
 		.data_in(acu_out),
 		.data_out(io_out),
 		.d0_io(d0_io),
